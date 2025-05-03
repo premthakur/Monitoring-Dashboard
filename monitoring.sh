@@ -6,16 +6,7 @@ BLUE='\033[1;34m'; CYAN='\033[1;36m'; NC='\033[0m'; BOLD='\033[1m'
 
 INTERVAL=10
 
-# -------------- BANNER & HEADERS ------------------------------
-banner() {
-  clear
-  echo -e "${CYAN}"
-  echo "╔════════════════════════════════════════════════════════════╗"
-  printf "║ %-58s ║\n" " "
-  printf "║   🖥️  ${BOLD}SYSTEM RESOURCE MONITOR – UBUNTU${NC}${CYAN}                 ║\n"
-  echo "╚════════════════════════════════════════════════════════════╝"
-  echo -e "${NC}"
-}
+ 
 
 header() {
   # header "🔥  TOP 10 APPLICATIONS"
@@ -114,7 +105,7 @@ service_monitoring() {
 
 # -------------------- DASHBOARD -------------------------------
 full_dashboard() {
-  banner
+   
   top_apps
   network_monitor
   disk_usage
@@ -130,13 +121,13 @@ full_dashboard() {
 # -------------------- ARGUMENTS --------------------------------
 while [[ $# -gt 0 ]]; do
   case $1 in
-    -cpu)     banner; system_load;         exit ;;
-    -memory)  banner; memory_usage;        exit ;;
-    -network) banner; network_monitor;     exit ;;
-    -disk)    banner; disk_usage;          exit ;;
-    -apps)    banner; top_apps;            exit ;;
-    -proc)    banner; process_monitoring;  exit ;;
-    -services)banner; service_monitoring;  exit ;;
+    -cpu)      system_load;         exit ;;
+    -memory)   memory_usage;        exit ;;
+    -network)  network_monitor;     exit ;;
+    -disk)     disk_usage;          exit ;;
+    -apps)    top_apps;            exit ;;
+    -proc)     process_monitoring;  exit ;;
+    -services) service_monitoring;  exit ;;
     -all)     full_dashboard;              exit ;;
     *) echo "Invalid option: $1"; exit 1 ;;
   esac
